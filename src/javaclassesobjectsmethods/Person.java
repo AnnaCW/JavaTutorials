@@ -11,4 +11,10 @@ class Person {
     void sayHello() {
         System.out.println("Hello");
     }
+    
+    int calculateYearsToRetirement() {
+        int yearsLeft = 65 - age;
+        
+        return yearsLeft;
+    }
 }

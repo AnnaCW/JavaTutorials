@@ -13,5 +13,9 @@ public class JavaClassesObjectsMethods {
         person2.name = "Jane";
         person2.age  = 60;
         person2.speak();
+        
+        int years = person2.calculateYearsToRetirement();
+        
+        System.out.println("Years until retirement: " + years + ".");
     }    
 }
