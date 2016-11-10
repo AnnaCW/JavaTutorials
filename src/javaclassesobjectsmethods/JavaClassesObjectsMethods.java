@@ -17,5 +17,12 @@ public class JavaClassesObjectsMethods {
         int years = person2.calculateYearsToRetirement();
         
         System.out.println("Years until retirement: " + years + ".");
+        
+        int age = person1.getAge();
+        String name = person1.getName();
+        
+        System.out.println("Name is: " + name);
+        System.out.println("Age is: " + age);
+        
     }    
 }

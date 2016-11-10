@@ -17,4 +17,12 @@ class Person {
         
         return yearsLeft;
     }
+    
+    int getAge() {
+        return age;
+    }
+    
+    String getName() {
+        return name;
+    }
 }
