@@ -3,13 +3,24 @@ package javaclassesobjectsmethods;
 public class JavaClassesObjectsMethods {
     
     public static void main(String[] args) {
-       new Machine();
+       Thing.description = "I am a thing";
        
-       Machine machine2 = new Machine("Bulky");
+       Thing.showInfo();
        
-       Machine machine3 = new Machine("Chalky", 7);
+       System.out.println("Before creating objects, count is: " + Thing.count);
        
-//       Java automatically selects the correct constructor
-//       depending on the parameter list
+       Thing thing1 = new Thing();
+       Thing thing2 = new Thing();
+       
+       thing1.name = "Bob";
+       thing2.name = "Sue";
+       
+       thing1.showName();
+       thing2.showName();
+       
+       System.out.println(Thing.LUCKY_NUMBER);
+       
+       System.out.println("After creating objects, count is: " + Thing.count);
+
     }
 }
