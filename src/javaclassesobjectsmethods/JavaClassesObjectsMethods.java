@@ -4,26 +4,17 @@ package javaclassesobjectsmethods;
 public class JavaClassesObjectsMethods {
     
     public static void main(String[] args) {
+       Plant plant = new Plant();
        
-        Engine e1 = new Engine();
-        e1.start();
-        
-        Human h1 = new Human("Bob");
-        h1.greet();
-        
-        Info info1 = new Engine();
-        info1.showInfo();
-//        can do this because engine implements info
-//        can only use to access the one Info method 
+       System.out.println("My name is " + plant.name + ". " + Plant.Description);
+       
+       System.out.println(plant.size);
+       
+       Oak oak = new Oak();
+       
+       System.out.println(oak.size);
+       System.out.println(oak.height);
 
-        Info info2 = h1;
-        info2.showInfo();
-        
-        outputInfo(e1);
-        outputInfo(h1);
     }
     
-    private static void outputInfo(Info info) {
-        info.showInfo();
-    }
 }
