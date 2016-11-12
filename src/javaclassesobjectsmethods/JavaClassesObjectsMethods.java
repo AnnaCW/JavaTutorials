@@ -4,10 +4,16 @@ public class JavaClassesObjectsMethods {
     
     public static void main(String[] args) {
         
-       Toad toad1 = new Toad(7, "Todd");
-       Toad toad2 = new Toad(5, "Tad");
-
-       System.out.println(toad1); 
-       System.out.println(toad2);
+       Widget w1 = new Widget();
+       
+       w1.start();
+       w1.stop();
+       
+       Car car1 = new Car();
+       
+       car1.start();
+       car1.showInfo();
+       car1.wipeWindShield();
+       car1.stop();
     }
 }
