@@ -1,19 +1,14 @@
 package javaclassesobjectsmethods;
+//import ocean.Fish;
+//import ocean.Seaweed;
+import ocean.plants.Seaweed;
+import ocean.*;
 
 public class JavaClassesObjectsMethods {
     
     public static void main(String[] args) {
-        
-       Widget w1 = new Widget();
+       Fish fish = new Fish();
+       Seaweed sw = new Seaweed();
        
-       w1.start();
-       w1.stop();
-       
-       Car car1 = new Car();
-       
-       car1.start();
-       car1.showInfo();
-       car1.wipeWindShield();
-       car1.stop();
     }
 }
