@@ -1,43 +1,42 @@
 package javaclassesobjectsmethods;
 
-//CASTING NUMERICAL VALUES
+//UPCASTING AND DOWNCASTING
 
 public class JavaClassesObjectsMethods {
     
     public static void main(String[] args) {
         
-        byte byteValue = 20;
-        short shortValue = 55; 
+        Machine2 machine2 = new Machine2();
+        Camera camera1 = new Camera();
         
-        int intValue = 888;
-        System.out.println("intValue: " + intValue);
-        
-        long longValue = 23333;
-        System.out.println("longValue: " + longValue);
-        
-        float floatValue = 8334.8f;
-        System.out.println("floatValue: " + floatValue);
+        machine2.start();
+        camera1.start();
+        camera1.snap();
+     
+//      UPCASTING - camera taken and made type machine
+//          variable originally of type camera
+//          now refered to by a variable of a type up the hierarchy
+//          hence upcasting
+        Machine2 machine3 = camera1;
+        machine3.start();
+//        machine3 is a camera - bc the object referred to by machine2 is a camera
 
-        double doubleValue = 32.4;
-        System.out.println("doubleValue: " + doubleValue);
+//      machine3.snap(): this wont work - its the variable that determines
+//                which methods are available
+//              but the type of object to which the variable refers that determines which
+//        IMPLEMENTATION of the methods
 
-               
-        intValue = (int)longValue;
-//            type I'm casting to (int), then value I'm casting to
-        System.out.println("long to int: " + intValue);
+//DOWNCASTING
         
-        doubleValue = intValue;
-//        no casting needed because no potential problem here
-        System.out.println("int to double: " + doubleValue);
+        Machine2 machine4 = new Camera();
+        Camera camera2 = (Camera)machine4;
+//        when downcasting, java requires confirmation - the parenthetical
+           //casting variable of type machine to type camera
+        camera2.snap();
         
-        intValue = (int)floatValue;
-        System.out.println("float to int: " + intValue);
-        
-        System.out.println("byte max: " + Byte.MAX_VALUE);
-
-        byteValue = (byte)128;
-        System.out.println("128 to byte: " + byteValue);
-//        unexpected behavior - 128 is too big 
+//        Machine2 machine5 = new Machine2();
+//        Camera camera3 = (Camera)machine5;
+//        camera3.start();
     }
       
 }
