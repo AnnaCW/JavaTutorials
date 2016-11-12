@@ -1,20 +1,30 @@
 package javaclassesobjectsmethods;
 
+//POLYMORPHISM
 
 public class JavaClassesObjectsMethods {
     
     public static void main(String[] args) {
-       Plant plant = new Plant();
+       Tree tree = new Tree();
+       Maple maple = new Maple();
        
-       System.out.println("My name is " + plant.name + ". " + Plant.Description);
+//     Tree tree2 = tree; two references to same object
+         
+       Tree tree2 = maple;
+//       polymorphism - can use child (maple) whereever you would use parent(tree)
        
-       System.out.println(plant.size);
-       
-       Oak oak = new Oak();
-       
-       System.out.println(oak.size);
-       System.out.println(oak.height);
+       tree2.grow();
+//       the object tree2 is pointing to is maple
 
+       maple.shedLeaves();
+       
+//     tree2.shedLeaves(); won't work - variable tree2 is a type of tree
+
+       doGrow(maple);
+    }
+    
+    public static void doGrow(Tree tree) {
+        tree.grow();
     }
     
 }
