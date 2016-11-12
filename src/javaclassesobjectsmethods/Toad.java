@@ -20,7 +20,7 @@ package javaclassesobjectsmethods;
     
 //    same result as the above: 
     
-//    public String toString() {
-//        return String.format("%4d: %s", id, name);
-//    }
+    public String toString() {
+        return String.format("%4d: %s", id, name);
+    }
 }
