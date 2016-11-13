@@ -1,41 +1,21 @@
 package javaclassesobjectsmethods;
 
-//MULTIPLE EXCEPTIONS
-
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
+//ABSTRACT CLASSES
 
 public class JavaClassesObjectsMethods {
     
     public static void main(String[] args) {
-        Test test = new Test();
- 
-// OPTION 3 - catches any kind of exception - polymorphism
-// ioexception, parse exception are children of exception parent class
-          try {
-            test.run();
-          } catch (Exception e) {
-              e.printStackTrace();
-          }
+        Motorcycle moto1 = new Motorcycle();
+        moto1.setId(5);
+        moto1.start();
         
-// OPTION 2 - handles multiple exceptions in one block
-//        try {
-//          test.run();
-//        } catch (IOException | ParseException e) {
-//            e.printStackTrace();
-//        }
+        Truck truck1 = new Truck();
+        truck1.setId(2);
+        truck1.start();
         
-//  OPTION 1
-//        try {
-//            test.run();
-//        } catch (IOException ex) {
-//            Logger.getLogger(JavaClassesObjectsMethods.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (ParseException ex) {
-//            System.out.println("couldn't parse file");
-//        }
+//        Vehicle vehicle = new Vehicle();
+//        can decide that there is no use for a vehicle
+//        prevent instantiation by making it abstract
     }
     
 }
