@@ -1,46 +1,24 @@
 package javaclassesobjectsmethods;
 
-// ENUMS
+// RECURSION
 
 public class JavaClassesObjectsMethods {
         
     public static void main(String[] args) {
-        Animal animal = Animal.CAT;
         
-        switch(animal) {
-        case DOG:
-            System.out.println("Dog");
-            break;
-        case CAT:
-            System.out.println("Cat");
-            break;
-        case MOUSE:
-            System.out.println("Mouse");
-            break;
-        default: 
-            break;
+//      e.g 4! = 4 * 3 * 2 * 1 (factorial 4)
+
+        System.out.println(factorial(4));
+    }
+    
+    private static int factorial(int value) {
+        
+        if(value == 1) {
+            return 1;
         }
         
-        System.out.println(Animal.CAT.getClass());
-        
-        System.out.println(Animal.CAT instanceof Animal);
-//        true
+        return factorial(value - 1) * value;
 
-        System.out.println(Animal.CAT instanceof Enum);
-//        true
-
-        System.out.println(Animal.MOUSE.getName());
-        
-        System.out.println(Animal.DOG);
-//        uses the toString override method
-        
-        System.out.println("Enum name as a string: " + Animal.DOG.name());
-//        this is a built-in name method for enums
-//        DOG 
-
-        Animal animal2 = Animal.valueOf("CAT");
-        
-        System.out.println(animal2);
     }
 }
 
