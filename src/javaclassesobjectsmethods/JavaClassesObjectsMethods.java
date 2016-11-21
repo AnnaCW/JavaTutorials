@@ -1,7 +1,5 @@
 package javaclassesobjectsmethods;
 
-// SERIALIZATION: SAVING OBJECTS TO FILES
-
-
+// SERIALIZING ARRAYS
 
 
