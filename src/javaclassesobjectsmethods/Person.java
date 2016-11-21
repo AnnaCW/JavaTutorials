@@ -1,28 +1,18 @@
 package javaclassesobjectsmethods;
 
-class Person {
-    String name;
-    int age;
+import java.io.Serializable;
+
+public class Person implements Serializable {
+    private int id;
+    private String name;
     
-    void speak() {
-        System.out.println("My name is " + name + " and I am " + age + " years old.");
+    public Person(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
     
-    void sayHello() {
-        System.out.println("Hello");
-    }
-    
-    int calculateYearsToRetirement() {
-        int yearsLeft = 65 - age;
-        
-        return yearsLeft;
-    }
-    
-    int getAge() {
-        return age;
-    }
-    
-    String getName() {
-        return name;
+    @Override
+    public String toString() {
+        return "Person [id=" + id + ", name=" + name + "]";
     }
 }
