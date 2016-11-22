@@ -1,5 +1,5 @@
 package javaclassesobjectsmethods;
 
-// SERIALIZING ARRAYS
+// THE TRANSIENT KEYWORD AND MORE SERIALIZATION
 
 
