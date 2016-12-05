@@ -1,39 +1,80 @@
 package javaclassesobjectsmethods;
 
-// SORTED MAPS
+// SETS
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
 
 public class JavaClassesObjectsMethods {
     
     public static void main(String[] args) {
-        HashMap<Integer, String> hashMap = new HashMap<>();
-        LinkedHashMap<Integer, String> linkedHashMap = new LinkedHashMap<>();
-        TreeMap<Integer, String> treeMap = new TreeMap<>();
         
-        testMap(hashMap);
-        testMap(linkedHashMap); 
-            // maintains order that items were put in 
-        testMap(treeMap);
-            // orders keys "natural order"
-    }
-    
-    public static void testMap(Map<Integer, String> map) {
-        map.put(9, "fox");
-        map.put(8, "eel");
-        map.put(4, "dog");
-        map.put(0, "mosquito");
-        map.put(16, "swan");
+//      HashSet does not retain order
+//        Set<String> set1 = new HashSet<String>();
         
-        for (Integer key: map.keySet()) {
-            String value = map.get(key);
-            
-            System.out.println(key + ": " + value);     
+//      LinkedHashSet does retain order
+//        Set<String> set1 = new LinkedHashSet<String>();
+        
+//      TreeSet sorts in natural order
+        Set<String> set1 = new TreeSet<String>();
+        
+        set1.add("dog");
+        set1.add("cat");
+        set1.add("mouse");
+        set1.add("snake");
+        
+        //Adding duplicate item does nothing
+        set1.add("mouse");
+        
+        System.out.println(set1);
+
+        //Iteration 
+        
+        for(String element: set1) {
+            System.out.println(element);
         }
-    }
+        
+        //Does set contain a given item? 
+        if(set1.contains("addvark")) {
+            System.out.println("Contains ardvark");
+        }
+        
+        if(set1.contains("cat")) {
+            System.out.println("Contains cat");
+        }
+        
+        //IsEmpty? 
+        if (set1.isEmpty()) {
+            System.out.println("Set is empty");
+        }
     
+        
+        Set<String> set2 = new TreeSet<String>();
+        
+        set2.add("dog");
+        set2.add("cat");
+        set2.add("giraffe");
+        set2.add("donkey");
+        set2.add("eel");
+        
+    /////////   INTERSECTION //////
+        
+        Set<String> intersection = new HashSet<>(set1);
+        
+        intersection.retainAll(set2);
+        
+        System.out.println(intersection);
+        
+    /////////   DIFFERENCE //////
+    
+        Set<String> difference = new HashSet<>(set1);
+        
+        difference.removeAll(set2);
+
+        System.out.println(difference);
+
+    }   
 }
