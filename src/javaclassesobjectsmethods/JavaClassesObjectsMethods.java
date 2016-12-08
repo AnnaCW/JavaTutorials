@@ -1,80 +1,85 @@
 package javaclassesobjectsmethods;
 
-// SETS
-
-import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
-import java.util.TreeSet;
 
+// USING CUSTOM OBJECTS IN SETS AND AS KEYS
+
+class Person3 {
+    private int id;
+    private String name;
+    
+    public Person3(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+    
+    public String toString() {
+        return "{ID is: " + id +"; Name is: " + name + "}";
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + this.id;
+        hash = 97 * hash + Objects.hashCode(this.name);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Person3 other = (Person3) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        return true;
+    }
+    
+}
 
 public class JavaClassesObjectsMethods {
     
     public static void main(String[] args) {
         
-//      HashSet does not retain order
-//        Set<String> set1 = new HashSet<String>();
-        
-//      LinkedHashSet does retain order
-//        Set<String> set1 = new LinkedHashSet<String>();
-        
-//      TreeSet sorts in natural order
-        Set<String> set1 = new TreeSet<String>();
-        
-        set1.add("dog");
-        set1.add("cat");
-        set1.add("mouse");
-        set1.add("snake");
-        
-        //Adding duplicate item does nothing
-        set1.add("mouse");
-        
-        System.out.println(set1);
+        Person3 p1 = new Person3(0, "Bob");
+        Person3 p2 = new Person3(1, "Sue");
+        Person3 p3 = new Person3(2, "Mike");
+        Person3 p4 = new Person3(1, "Sue");
 
-        //Iteration 
         
-        for(String element: set1) {
-            System.out.println(element);
+        Map<Person3, Integer> map = new LinkedHashMap<Person3, Integer>();
+        
+        map.put(p1, 1);
+        map.put(p2, 2);
+        map.put(p3, 3);
+        map.put(p4, 1);
+        
+        for(Person3 key: map.keySet()) {
+            System.out.println(key + ": " + map.get(key));
         }
         
-        //Does set contain a given item? 
-        if(set1.contains("addvark")) {
-            System.out.println("Contains ardvark");
-        }
+        Set<Person3> set = new LinkedHashSet<Person3>();
         
-        if(set1.contains("cat")) {
-            System.out.println("Contains cat");
-        }
+        set.add(p1);
+        set.add(p2);
+        set.add(p3);
+        set.add(p4);
         
-        //IsEmpty? 
-        if (set1.isEmpty()) {
-            System.out.println("Set is empty");
-        }
-    
-        
-        Set<String> set2 = new TreeSet<String>();
-        
-        set2.add("dog");
-        set2.add("cat");
-        set2.add("giraffe");
-        set2.add("donkey");
-        set2.add("eel");
-        
-    /////////   INTERSECTION //////
-        
-        Set<String> intersection = new HashSet<>(set1);
-        
-        intersection.retainAll(set2);
-        
-        System.out.println(intersection);
-        
-    /////////   DIFFERENCE //////
-    
-        Set<String> difference = new HashSet<>(set1);
-        
-        difference.removeAll(set2);
-
-        System.out.println(difference);
-
+        System.out.println(set);
     }   
 }
