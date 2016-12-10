@@ -1,157 +1,93 @@
 package javaclassesobjectsmethods;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
+// NATURAL ORDER
 
-// SORTING LISTS
-
-class Person4 {
-    private int id;
+class Person5 implements Comparable<Person5> {
     private String name;
     
-    public Person4(int id, String name) {
-        this.id = id;
+    public Person5(String name) {
         this.name = name;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
+    
+    public String toString() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
-    public String toString() {
-        return id + ": " + name;
-    }
-    
-}
-
-class StringLengthComparator implements Comparator<String> {
-
-    @Override
-    public int compare(String o1, String o2) {
+    public int compareTo(Person5 person) {
+        int len1 = name.length();
+        int len2 = person.name.length();
         
-        int len1 = o1.length();
-        int len2 = o2.length();
-        
-        if (len1 > len2) {
+        if(len1 > len2) {
             return 1;
         }
-        
         else if(len1 < len2) {
             return -1;
         }
-        
-        return 0;
+        return name.compareTo(person.name);
     }
-}
 
-class ReverseAlphabeticalComparator implements Comparator<String> {
-   public int compare(String o1, String o2) {
-       return -o1.compareTo(o2);
-   }
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.name);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Person5 other = (Person5) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        return true;
+    }       
 }
 
 public class JavaClassesObjectsMethods {
     
-    
     public static void main(String[] args) {
+       List<Person5> list = new ArrayList<>();
+       SortedSet<Person5> set = new TreeSet<>();
        
-///////////// Sorting Strings ///////////////////////
-       List<String> animals = new ArrayList<>();
+       addElements(list);
+       addElements(set);
        
-       animals.add("cat");
-       animals.add("lion");
-       animals.add("dog");
-       animals.add("snake");
-       animals.add("rat");
-       animals.add("bat");
-
-//       Collections.sort(animals, new StringLengthComparator());
-       Collections.sort(animals, new ReverseAlphabeticalComparator());
-
+       Collections.sort(list);
        
-       for(String animal: animals) {
-           System.out.println(animal);
-       }
- ///////////// Sorting Numbers ///////////////////////
-      
-       List<Integer> numbers = new ArrayList<>();
-       
-       numbers.add(3);
-       numbers.add(1);
-       numbers.add(36);
-       numbers.add(16);
-       numbers.add(12);
-       
-//       Collections.sort(numbers);
-       
-       Collections.sort(numbers, new Comparator<Integer>() {
-           @Override
-           public int compare(Integer num1, Integer num2) {
-               return -num1.compareTo(num2);
-           }
-       });
-       
-        for(Integer number: numbers) {
-           System.out.println(number);
-       }
-        
-  ///////////// Sorting Arbitrary Objects ///////////////////////
-      
-       List<Person4> people = new ArrayList<Person4>();
-       
-       people.add(new Person4(1, "Jane"));
-       people.add(new Person4(4, "Bob"));
-       people.add(new Person4(3, "Anna"));
-       people.add(new Person4(2, "Greg"));
-       
-//       Collections.sort(people); doesnt work b/c no natural order
-
-// sort by ID 
-        Collections.sort(people, new Comparator<Person4>() {
-            public int compare (Person4 p1, Person4 p2) {
-                
-                if(p1.getId() > p2.getId()) {
-                    return 1;
-                }
-                else if(p1.getId() < p2.getId()) {
-                    return -1;
-                }
-                
-                return 0;
-            }
-        });
-        
-        for(Person4 person: people) {
-           System.out.println(person);
-        }
-        
-// sort by name
-
-        Collections.sort(people, new Comparator<Person4>() {
-            public int compare (Person4 p1, Person4 p2) {
-                return p1.getName().compareTo(p2.getName());
-            }
-        });
-       
-       for(Person4 person: people) {
-           System.out.println(person);
-       }
-
+       showElements(list);
+       System.out.println();
+       showElements(set);
     }   
+    
+    private static void addElements(Collection<Person5> col) {
+        col.add(new Person5 ("Joe"));
+        col.add(new Person5 ("Sue"));
+        col.add(new Person5 ("Julie"));
+        col.add(new Person5 ("Mike"));
+        col.add(new Person5 ("Clare"));
+    }
+    
+    private static void showElements(Collection<Person5> col) {
+        for(Person5 element: col) {
+            System.out.println(element);
+        }
+    }
 }
